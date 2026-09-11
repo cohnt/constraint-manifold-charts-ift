@@ -1,0 +1,41 @@
+{
+  "_comment": [
+    "The pinned target for the target-scene figure: one sampled benchmark target, held as a",
+    "configuration rather than a seed.  Reproduce the figure with:",
+    "  ./scripts/render_target_scene.sh --solve",
+    "or pose the scene alone with:",
+    "  python scripts/visualize_target_scene.py --no-interactive \\",
+    "      --configuration scripts/target_scene_configuration.json",
+    "q_gold is the arm configuration; the mug frame is the grasp frame, X_WM =",
+    "FK_tool0(q_gold) * X_EG.  The weld is rebuilt from X_WM.rpy_deg at this precision, so",
+    "the round trip is exact.",
+    "This is the 4th target accepted from seed 42 (draw 5).  A seed alone does not identify",
+    "it -- --resample draws only the first -- which is why the configuration is pinned."
+  ],
+  "q_gold": [
+    -2.998888489379533,
+    -2.5758052578213277,
+    1.3971250045816106,
+    -0.23953242675347308,
+    -2.1282921811031534,
+    0.006564515578761032
+  ],
+  "X_WM": {
+    "translation": [
+      0.14127318581869538,
+      0.019039548338961848,
+      0.528268261707702
+    ],
+    "rpy_deg": [
+      -105.83106531968647,
+      57.005570806436936,
+      84.47569550938826
+    ]
+  },
+  "seed": 42,
+  "draw_index": 5,
+  "min_clearance": 0.029340753420790754,
+  "closest_pair": "ur5e vs wsg",
+  "mug_top_z": 0.5732682617077021,
+  "accepted_index": 3
+}

@@ -1,0 +1,36 @@
+directives:
+
+# Add base (floating, actuated wheels).
+- add_model:
+    name: base
+    file: package://rby1_whole_body/models/ruby/rby1_description_drake/base_holonomic_with_actuators.urdf
+
+# Add torso and up.
+- add_directives:
+    file: package://rby1_whole_body/models/ruby/rby1_description_drake/add_rby1_torso_arms_head.dmd.yaml
+
+# Add grippers.
+- add_directives:
+    file: package://rby1_whole_body/models/ruby/rby1_description_drake/add_rby1_grippers_sim.dmd.yaml
+
+# Add filter for base, lower torso, and head.
+# (member_groups referencing another model's own internal
+# <drake:collision_filter_group> silently fails to resolve at this directive
+# level in this Drake version -- confirmed via GetCollisionCandidates() --
+# so this uses explicit fully-qualified members instead.)
+- add_collision_filter_group:
+    name: base_lower_torso_head_filer
+    members:
+        - base::base
+        - base::wheel_l
+        - base::wheel_r
+        - base::lidar_mid360
+        - torso::link_torso_0
+        - torso::link_torso_1
+        - torso::link_torso_2
+        - torso::link_torso_3
+        - head::link_head_base
+        - head::link_head_0
+        - head::link_head_1
+        - head::link_head_2
+    ignored_collision_filter_groups: [base_lower_torso_head_filer]

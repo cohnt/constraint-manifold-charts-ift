@@ -1,0 +1,14 @@
+**/__pycache__/*
+notebooks/.ipynb_checkpoints/*
+notebooks/snopt.log
+notebooks/trajectory.html
+cpp_parameterization/build/*
+cpp_parameterization/cpp/build/*
+*.so
+out/
+*.log
+*.pdf
+scratch/
+*.code-workspace
+venv/
+.venv/

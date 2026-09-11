@@ -1,0 +1,17 @@
+{
+    "note": "This is a pruned copy of the upstream ur_description package. Only the UR5e is used by this project; the other six robot variants and their meshes were removed. See the source-link below for the unmodified original.",
+    "robots": [
+        {
+            "name": "UR5e",
+            "type": "robotic arm",
+            "manufacturer": "Universal Robots",
+            "xacro-generated": true,
+            "urdf": [
+                "urdf/ur5e.urdf"
+            ],
+            "variant": null,
+            "source-link": "https://github.com/ros-industrial/universal_robot/tree/6507bb6756d0065d49b76230ff55f875f099a827/ur_description",
+            "id": 244
+        }
+    ]
+}

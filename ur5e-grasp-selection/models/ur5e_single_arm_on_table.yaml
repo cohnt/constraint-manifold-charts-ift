@@ -1,0 +1,42 @@
+directives:
+  - add_model:
+      name: ur5e
+      file: package://eaik_ift_experiment/models/universal_robots/ur_description/urdf/ur5e_drake_collision_obj.urdf
+  - add_weld:
+      parent: world
+      child: ur5e::base_link
+  - add_model:
+      name: wsg
+      file: package://eaik_ift_experiment/models/wsg_finray/wsg50_110_finray_fingers_box_collision_obj.sdf
+  - add_weld:
+      parent: ur5e::tool0
+      child: wsg::body_frame
+      X_PC:
+        translation: [0, 0, 0.04]
+        rotation: !Rpy { deg: [90, 0, 0] }
+  - add_model:
+      name: table
+      file: package://drake_models/manipulation_station/table_wide.sdf
+  - add_weld:
+      parent: world
+      child: table::table_body
+      X_PC:
+        translation: [0.4, 0.0, 0.0]
+  # table2 is the robot's standing surface.  It must be here as well as in the render
+  # scene, or solutions are never collision-checked against something the figure shows.
+  - add_model:
+      name: table2
+      file: package://drake_models/manipulation_station/table_wide.sdf
+  - add_weld:
+      parent: world
+      child: table2::table_body
+      X_PC:
+        translation: [-0.2, 0.0, 0.0]
+  - add_model:
+      name: target_mug
+      file: package://eaik_ift_experiment/models/mug/mug_simple_red.urdf
+  - add_weld:
+      parent: world
+      child: target_mug::mug_body_link
+      X_PC:
+        translation: [0.38, 0.0, 0.06]

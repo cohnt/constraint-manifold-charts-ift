@@ -1,0 +1,39 @@
+{
+  "_comment": [
+    "Joint configurations of the three grasps in the published grasp-selection figure.",
+    "They were solved by the revision of the solver at commit cd0a354 (2026-08-13) and",
+    "cannot be regenerated from a random seed: branch selection and the solver's joint box",
+    "both changed afterwards, so today's solver converges to a different set of grasps for",
+    "essentially every seed. Recovered from the archived Meshcat scene by fitting Drake's",
+    "forward kinematics to the exported link transforms (residual < 3e-8).",
+    "Pass with --configurations to reproduce the published figure exactly; omit it to solve",
+    "fresh grasps with the current solver."
+  ],
+  "source_commit": "cd0a354",
+  "configurations": [
+    [
+      -0.12251009239302992,
+      -0.6704602378023615,
+      1.4357646171133418,
+      1.620797523455913,
+      1.9262406450724185,
+      -0.13856152154983825
+    ],
+    [
+      -1.4408377766429135,
+      -1.0072133992767047,
+      2.8579601921932367,
+      -1.6976182684699552,
+      -0.22161783927276396,
+      -2.93896400497965
+    ],
+    [
+      -0.5894247870638774,
+      -0.772985852867406,
+      1.6402813625914547,
+      1.531139120761555,
+      1.2532446314704808,
+      -0.07547570979379048
+    ]
+  ]
+}

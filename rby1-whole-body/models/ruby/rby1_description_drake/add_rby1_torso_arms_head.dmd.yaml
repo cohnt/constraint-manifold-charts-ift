@@ -1,0 +1,97 @@
+directives:
+
+# Add torso welded to base.
+- add_model:
+    name: torso
+    file: package://rby1_whole_body/models/ruby/rby1_description_drake/torso.urdf
+- add_weld:
+    parent: base::torso_mount
+    child: torso::link_torso_base
+
+# Add left arm welded to torso.
+- add_model:
+    name: left_arm
+    file: package://rby1_whole_body/models/ruby/rby1_description_drake/left_arm.urdf
+- add_weld:
+    parent: torso::link_torso_5
+    child: left_arm::link_left_arm_base
+
+# Add right arm welded to torso.
+- add_model:
+    name: right_arm
+    file: package://rby1_whole_body/models/ruby/rby1_description_drake/right_arm.urdf
+- add_weld:
+    parent: torso::link_torso_5
+    child: right_arm::link_right_arm_base
+
+# Add filter between torso and upper arms.
+# (member_groups referencing another model's own internal
+# <drake:collision_filter_group> silently fails to resolve at this directive
+# level in this Drake version -- confirmed via GetCollisionCandidates() --
+# so this uses explicit fully-qualified members instead.)
+- add_collision_filter_group:
+    name: torso_upper_arms_filter
+    members:
+        - torso::link_torso_base
+        - torso::link_torso_0
+        - torso::link_torso_1
+        - torso::link_torso_2
+        - torso::link_torso_3
+        - torso::link_torso_4
+        - torso::link_torso_5
+        - left_arm::link_left_arm_0
+        - left_arm::link_left_arm_1
+        - left_arm::link_left_arm_2
+        - right_arm::link_right_arm_0
+        - right_arm::link_right_arm_1
+        - right_arm::link_right_arm_2
+    ignored_collision_filter_groups: [torso_upper_arms_filter]
+
+# Add head welded to torso.
+- add_model:
+    name: head
+    file: package://rby1_whole_body/models/ruby/rby1_description_drake/head_with_mit_camera_mount.urdf
+- add_weld:
+    parent: torso::link_torso_5
+    child: head::link_head_base
+
+# Add filter between torso and head.
+# (member_groups referencing another model's own internal
+# <drake:collision_filter_group> silently fails to resolve at this directive
+# level in this Drake version -- confirmed via GetCollisionCandidates() --
+# so this uses explicit fully-qualified members instead.)
+- add_collision_filter_group:
+    name: torso_head_filter
+    members:
+        - torso::link_torso_base
+        - torso::link_torso_0
+        - torso::link_torso_1
+        - torso::link_torso_2
+        - torso::link_torso_3
+        - torso::link_torso_4
+        - torso::link_torso_5
+        - head::link_head_base
+        - head::link_head_0
+        - head::link_head_1
+        - head::link_head_2
+    ignored_collision_filter_groups: [torso_head_filter]
+
+# Add filter between upper arms and head: both are deliberately oversized
+# safety-margin spheres (link_head_0's is explicitly "Conservative geometry
+# to protect sensor head"), and the shoulder sits close enough to the head at
+# rest (~0.03 m surface gap at Q_READY) that they read as colliding to a
+# planner without ever being a real hardware contact risk.
+- add_collision_filter_group:
+    name: arms_head_filter
+    members:
+        - left_arm::link_left_arm_0
+        - left_arm::link_left_arm_1
+        - left_arm::link_left_arm_2
+        - right_arm::link_right_arm_0
+        - right_arm::link_right_arm_1
+        - right_arm::link_right_arm_2
+        - head::link_head_base
+        - head::link_head_0
+        - head::link_head_1
+        - head::link_head_2
+    ignored_collision_filter_groups: [arms_head_filter]

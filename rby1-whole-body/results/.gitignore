@@ -1,0 +1,22 @@
+# Execution records written by the robot client (not part of this release):
+# per-run robot logs
+# (actual joint_position/velocity/torque, wrist F/T, gripper widths, camera
+# frames) -- tens of MB of diagnostics for a single run, not source. Keep the
+# folder in git, ignore the records themselves.
+*
+!.gitignore
+!.gitkeep
+
+# The exception is a COMPLETE sweep of the grid, in a dated folder. Same argument
+# plans/.gitignore makes for the event log -- for anything quoted as an execution
+# result, the records ARE the result -- with one difference that makes it stronger:
+# a plan can be replanned and a timing log re-measured, but a hardware run cannot
+# be regenerated. The robot was in that state once. What is deliberately still
+# ignored is the per-run debugging pickle: a single point re-executed while chasing
+# a fault, and anything carrying camera frames (rgb_im/dep_im), which is where the
+# tens of megabytes actually live.
+#
+# 2026-08-11: 20/20 points executed clean, 18.0 min, mean 54.1 s per point.
+# See the folder README for the full record.
+!2026-08-11/
+!2026-08-11/*.pkl

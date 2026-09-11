@@ -1,0 +1,52 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "rby1-whole-body"
+version = "0.1.0"
+description = "RB-Y1 whole-body constrained planning: reduced-coordinate planning through IKFast analytic IK, and the reports that produce the paper's full-body IK table."
+authors = [
+    { name = "Thomas Cohn" },
+    { name = "Seiji Shaw" },
+    { name = "Harel Biggie" },
+    { name = "Travis Manderson" },
+    { name = "Nicholas Roy" },
+    { name = "Russ Tedrake" },
+]
+requires-python = ">=3.12"   # matches the cpython-312 compiled IK extensions
+dependencies = [
+    # Stable release, not a nightly: nightly wheels are retained only ~56 days, so a
+    # nightly pin in a public release stops installing a couple of months after it ships.
+    # The results were produced on a nightly that this project's own re-baseline recorded
+    # as behaviourally identical to the neighbouring stable release.  See ../docs/INSTALL.md.
+    "drake==1.56.0",  # Drake bindings; imported everywhere
+    "tqdm",         # progress bars
+    "matplotlib",   # plotting
+    "networkx",     # graph algorithms used in planning
+    "scipy",        # scientific computing
+    "pyyaml",       # YAML parsing
+    "pydot",        # graph visualization
+    "numpy",        # arrays throughout
+]
+
+[project.optional-dependencies]
+# Deps for scripts/video/ only. The planner does not need these, and the robot
+# certainly does not, so they are an extra rather than a runtime dependency --
+# but `build_video.py` cannot produce either deliverable without them, and it
+# checks for them up front rather than letting a stage fail an hour in.
+# Blender, ffmpeg and the DejaVu fonts are system packages, not pip ones; see
+# the folder README.
+video = [
+    "manim",      # the explainer scenes in scripts/video/manim_scenes_v2.py
+    "nbconvert",  # executes the IIWA experiment's notebook for that segment
+]
+
+# NOTE: other packages installed in the development environment (e.g. IPython, many typing stubs,
+#       etc.) are **not** listed here.  Only the runtime dependencies used by the library are included.
+#       The build system is set to use setuptools so that running ``python setup.py`` behaves as before.
+
+# Packaging uses setuptools auto-discovery (src-layout). The loose modules in src/ are picked up
+# as top-level py-modules and the plan_format/ directory (with its __init__.py) is picked
+# up as a package — no explicit [tool.setuptools] config required. The C++ IK
+# extensions are built separately via setup.py's ext_modules.

@@ -1,0 +1,190 @@
+directives:
+  # Add UR5e arm (Drake-compatible URDF with primitive collision geometry)
+  - add_model:
+      name: ur5e
+      file: package://eaik_ift_experiment/models/universal_robots/ur_description/urdf/ur5e_drake_collision.urdf
+      default_joint_positions:
+        shoulder_pan_joint: [0]
+        shoulder_lift_joint: [-1.5707963267948966]
+        elbow_joint: [1.5707963267948966]
+        wrist_1_joint: [-1.5707963267948966]
+        wrist_2_joint: [-1.5707963267948966]
+        wrist_3_joint: [0]
+
+  - add_weld:
+      parent: world
+      child: ur5e::base_link
+
+  # Add WSG gripper with finray fingers
+  # Weld to UR5e tool0 frame (standard UR flange interface)
+  - add_model:
+      name: wsg
+      file: package://eaik_ift_experiment/models/wsg_finray/wsg50_110_finray_fingers_box_collision.sdf
+
+  - add_weld:
+      parent: ur5e::tool0
+      child: wsg::body_frame
+      X_PC:
+        translation: [0, 0, 0.04]
+        rotation: !Rpy { deg: [90, 0, 0] }
+
+  # Add bins
+  - add_model:
+      name: binF
+      file: package://drake_models/manipulation_station/bin2.sdf
+
+  - add_weld:
+      parent: world
+      child: binF::bin_base
+      X_PC:
+        translation: [0.75, 0, 0]
+        rotation: !Rpy { deg: [0.0, 0.0, 0.0] }
+
+  # Add table (primary work surface)
+  - add_model:
+      name: table
+      file: package://drake_models/manipulation_station/table_wide.sdf
+
+  - add_weld:
+      parent: world
+      child: table::table_body
+      X_PC:
+        translation: [0.4, 0.0, 0.0]
+
+  # Add second table (robot standing surface)
+  - add_model:
+      name: table2
+      file: package://drake_models/manipulation_station/table_wide.sdf
+
+  - add_weld:
+      parent: world
+      child: table2::table_body
+      X_PC:
+        translation: [-0.2, 0.0, 0.0]
+
+  # Add shelves (left side)
+  - add_model:
+      name: shelves
+      file: package://eaik_ift_experiment/models/assets/shelves.sdf
+
+  - add_weld:
+      parent: world
+      child: shelves::shelves_body
+      X_PC:
+        translation: [0.3, 0.55, 0.4]
+        rotation: !Rpy { deg: [0.0, 0.0, 235.0] }
+
+  # Mug on left shelves
+  - add_model:
+      name: mug
+      file: package://eaik_ift_experiment/models/mug/mug_simple_red.urdf
+
+  - add_weld:
+      parent: world
+      child: mug::mug_body_link
+      X_PC:
+        translation: [0.28, 0.52, 0.58414171]
+        rotation: !Rpy { deg: [0.0, 0.0, 45.0] }
+
+  - add_model:
+      name: mug2
+      file: package://eaik_ift_experiment/models/mug/mug_simple_red.urdf
+
+  - add_weld:
+      parent: world
+      child: mug2::mug_body_link
+      X_PC:
+        translation: [0.28, 0.52, 0.32]
+        rotation: !Rpy { deg: [0.0, 0.0, 45.0] }
+
+  - add_model:
+      name: mug3
+      file: package://eaik_ift_experiment/models/mug/mug_simple_red.urdf
+
+  - add_weld:
+      parent: world
+      child: mug3::mug_body_link
+      X_PC:
+        translation: [0.3, 0.67, 0.06]
+        rotation: !Rpy { deg: [0.0, 0.0, 45.0] }
+
+  - add_model:
+      name: mug4
+      file: package://eaik_ift_experiment/models/mug/mug_simple_red.urdf
+
+  - add_weld:
+      parent: world
+      child: mug4::mug_body_link
+      X_PC:
+        translation: [0.5, 0.45, 0.06]
+        rotation: !Rpy { deg: [0.0, 0.0, 45.0] }
+
+  # Add shelves (right side)
+  - add_model:
+      name: shelves2
+      file: package://eaik_ift_experiment/models/assets/shelves.sdf
+
+  - add_weld:
+      parent: world
+      child: shelves2::shelves_body
+      X_PC:
+        translation: [0.3, -0.55, 0.4]
+        rotation: !Rpy { deg: [0.0, 0.0, 135.0] }
+
+  # Mugs on right shelves
+  - add_model:
+      name: rmug
+      file: package://eaik_ift_experiment/models/mug/mug_simple_red.urdf
+
+  - add_weld:
+      parent: world
+      child: rmug::mug_body_link
+      X_PC:
+        translation: [0.28, -0.52, 0.58414171]
+        rotation: !Rpy { deg: [0.0, 0.0, -45.0] }
+
+  - add_model:
+      name: rmug2
+      file: package://eaik_ift_experiment/models/mug/mug_simple_red.urdf
+
+  - add_weld:
+      parent: world
+      child: rmug2::mug_body_link
+      X_PC:
+        translation: [0.28, -0.52, 0.32]
+        rotation: !Rpy { deg: [0.0, 0.0, -45.0] }
+
+  - add_model:
+      name: rmug3
+      file: package://eaik_ift_experiment/models/mug/mug_simple_red.urdf
+
+  - add_weld:
+      parent: world
+      child: rmug3::mug_body_link
+      X_PC:
+        translation: [0.28, -0.52, 0.06]
+        rotation: !Rpy { deg: [0.0, 0.0, -45.0] }
+
+  # Add shelves (back-left)
+  - add_model:
+      name: shelves3
+      file: package://eaik_ift_experiment/models/assets/shelves.sdf
+
+  - add_weld:
+      parent: world
+      child: shelves3::shelves_body
+      X_PC:
+        translation: [-0.45, -0.55, 0.4]
+        rotation: !Rpy { deg: [0.0, 0.0, 235.0] }
+
+  # Add shelves (back-right)
+  - add_model:
+      name: shelves4
+      file: package://eaik_ift_experiment/models/assets/shelves.sdf
+
+  - add_weld:
+      parent: world
+      child: shelves4::shelves_body
+      X_PC:
+        translation: [-0.45, 0.55, 0.4]
+        rotation: !Rpy { deg: [0.0, 0.0, 135.0] }

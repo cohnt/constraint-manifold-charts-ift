@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>rby1_whole_body</name>
+  <version>0.0.0</version>
+  <description>
+    Resources for bimanual planning.
+  </description>
+  <maintainer email="noreply@example.com">IFT Paper Authors</maintainer>
+  <author>Thomas Cohn</author>
+  <license>MIT</license>
+</package>

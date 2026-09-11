@@ -1,0 +1,19 @@
+.git
+**/__pycache__
+**/*.pyc
+**/*.so
+**/.venv/
+**/venv/
+
+# Generated output trees. These are anchored deliberately: a bare **/video/
+# also matches rby1-whole-body/scripts/video/, which is the video pipeline's
+# source and must ship.
+/iiwa-bimanual/out/
+/iiwa-bimanual/cpp_parameterization/build/
+/ur5e-grasp-selection/out/
+/ur5e-grasp-selection/logs/
+/rby1-whole-body/out/
+/rby1-whole-body/video/
+/rby1-whole-body/media/
+/rby1-whole-body/drake-binary/
+/rby1-whole-body/videos/*.mp4

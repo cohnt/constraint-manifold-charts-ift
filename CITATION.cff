@@ -1,0 +1,44 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite the paper below."
+title: "Planning along Differentiable Charts of Constraint Manifolds with General-Purpose IK Solvers"
+abstract: >-
+  Code release for the paper. Thomas Cohn and Seiji Shaw contributed equally.
+authors:
+  - family-names: Cohn
+    given-names: Thomas
+  - family-names: Shaw
+    given-names: Seiji
+  - family-names: Biggie
+    given-names: Harel
+  - family-names: Manderson
+    given-names: Travis
+  - family-names: Roy
+    given-names: Nicholas
+  - family-names: Tedrake
+    given-names: Russ
+license: MIT
+repository-code: "https://github.com/cohnt/constraint-manifold-charts-ift"
+url: "https://tommycohn.com/inverse-function-theorem-parameterization/"
+preferred-citation:
+  type: article
+  title: "Planning along Differentiable Charts of Constraint Manifolds with General-Purpose IK Solvers"
+  authors:
+    - family-names: Cohn
+      given-names: Thomas
+    - family-names: Shaw
+      given-names: Seiji
+    - family-names: Biggie
+      given-names: Harel
+    - family-names: Manderson
+      given-names: Travis
+    - family-names: Roy
+      given-names: Nicholas
+    - family-names: Tedrake
+      given-names: Russ
+  year: 2026
+  journal: "arXiv preprint arXiv:2609.10905"
+  url: "https://arxiv.org/abs/2609.10905"
+  identifiers:
+    - type: other
+      value: "arXiv:2609.10905"
+  notes: "Thomas Cohn and Seiji Shaw contributed equally."

@@ -1,0 +1,34 @@
+# --- Python ---
+__pycache__/
+*.py[cod]
+*.so
+*.egg-info/
+.venv/
+venv/
+.ipynb_checkpoints/
+
+# --- Build trees ---
+/iiwa-bimanual/cpp_parameterization/build/
+/rby1-whole-body/build/
+/rby1-whole-body/drake-binary/
+
+# --- Generated results (reproducible; regenerate rather than commit) ---
+/iiwa-bimanual/out/
+/ur5e-grasp-selection/out/
+/ur5e-grasp-selection/logs/
+/rby1-whole-body/media/
+/rby1-whole-body/video/
+
+# --- Raw hardware capture: not distributable, not reproducible ---
+# trim_points.json is the derived sync table and DOES ship; the clips do not.
+/rby1-whole-body/videos/*
+!/rby1-whole-body/videos/trim_points.json
+
+# --- RB-Y1 plan cache and hardware records ---
+# Governed by rby1-whole-body/plans/.gitignore and results/.gitignore,
+# which document precisely which artifacts ship and why.
+
+# --- Misc ---
+*.log
+scratch/
+.DS_Store

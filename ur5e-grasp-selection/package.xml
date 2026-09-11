@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>eaik_ift_experiment</name>
+  <version>0.0.0</version>
+  <description>
+    EAIK + IFT grasp selection experiment: analytic IK via EAIK with
+    Inverse Function Theorem gradients for optimization.
+  </description>
+  <maintainer email="noreply@example.com">IFT Paper Authors</maintainer>
+  <author>Thomas Cohn</author>
+  <license>MIT</license>
+</package>

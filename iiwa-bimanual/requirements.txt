@@ -1,0 +1,32 @@
+# Python dependencies for the bimanual IIWA experiment.
+#
+# pydrake is deliberately NOT installed from here.
+#
+# This experiment compiles a pybind11 extension (_iiwa_ik) against Drake's C++
+# library, so it needs a Drake *installation* carrying
+# lib/cmake/drake/drake-config.cmake -- which the pip wheel is not. The pydrake
+# on PYTHONPATH must then come from that same installation: an extension built
+# against one Drake and imported alongside a different pydrake fails with
+#
+#   ImportError: generic_type: type "IiwaBimanualReachableConstraint"
+#                referenced unknown base type "drake::solvers::Constraint"
+#
+# because two pybind11 type registries end up in one process. Installing a
+# `drake` wheel into this environment is exactly how that happens.
+#
+# See ../docs/INSTALL.md (routes 2 and 3). This release is pinned to Drake 1.56.0.
+
+numpy
+scipy               # src/rrt.py
+matplotlib
+pandas              # scripts/analysis/plot_pipeline_comparison.py
+tqdm
+networkx            # src/rrt.py
+pyyaml
+seaborn             # scripts/analysis/plot_gradient_study.py
+statsmodels         # scripts/analysis/plot_gradient_study.py (lowess fits)
+
+# Not pip-installable and not needed for the experiments: the Blender half of
+# the swept-volume figure pipeline imports `bpy`, `mathutils` and `addon_utils`,
+# which come from Blender's own bundled Python. Those scripts are run as
+# `blender --background --python`, never with this interpreter. See README.

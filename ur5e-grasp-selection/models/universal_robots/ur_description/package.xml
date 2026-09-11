@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<!--
+  Vendored from ros-industrial/universal_robot at 6507bb6756d0065d49b76230ff55f875f099a827,
+  pruned to the UR5e only. The author and maintainer entries below are upstream's and are
+  retained as attribution; they are not contacts for this code release.
+
+  Note the licence discrepancy inherited from upstream: the repository is licensed
+  Apache-2.0 (LICENSE.txt, vendored alongside this file), while this package manifest still
+  declares BSD. Both are recorded rather than silently reconciled. See ../../../THIRD_PARTY.md.
+-->
+<package format="2">
+  <name>ur_description</name>
+  <version>1.3.1</version>
+  <description>
+      URDF description for Universal UR3(e), UR5(e), UR10(e) and UR16e robots.
+      Pruned to the UR5e for this release.
+  </description>
+
+  <author>Wim Meeussen</author>
+  <author>Kelsey Hawkins</author>
+  <author>Mathias Ludtke</author>
+  <author>Felix Messmer</author>
+  <maintainer email="g.a.vanderhoorn@tudelft.nl">G.A. vd. Hoorn</maintainer>
+  <maintainer email="miguel.prada@tecnalia.com">Miguel Prada Sarasola</maintainer>
+  <maintainer email="nhg@ipa.fhg.de">Nadia Hammoudeh Garcia</maintainer>
+
+  <license>BSD</license>
+  <url type="website">http://wiki.ros.org/ur_description</url>
+
+  <buildtool_depend>catkin</buildtool_depend>
+</package>

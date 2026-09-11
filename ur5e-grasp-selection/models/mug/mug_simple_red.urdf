@@ -1,0 +1,43 @@
+<robot name="mug">
+  <link name="mug_body_link">
+    <inertial>
+      <origin xyz="8.13E-03 3.27E-07 -7.84E-03" rpy="0 0 0"/>
+      <mass value="4.09E-01"/>
+      <inertia ixx="6.9361E-04" ixy="2.7599E-07" ixz="2.6047E-05" iyy="9.1656E-04" iyz="-1.9292E-09" izz="8.6403E-04"/>
+    </inertial>
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="mug_visual.obj" scale="0.9 0.9 0.9"/>
+      </geometry>
+      <material name="">
+        <color rgba="0.2 0.3 0.1 1"/>
+      </material>
+    </visual>
+
+    <collision>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <cylinder length="0.09" radius="0.0405"/>
+      </geometry>
+    </collision>
+    <collision>
+      <origin rpy="0 -1.071 0" xyz="0.063 0 0.0252"/>
+      <geometry>
+        <cylinder length="0.0486" radius="0.009"/>
+      </geometry>
+    </collision>
+    <collision>
+      <origin rpy="0 0 0" xyz="0.081 0 0"/>
+      <geometry>
+        <cylinder length="0.0486" radius="0.009"/>
+      </geometry>
+    </collision>
+    <collision>
+      <origin rpy="0 1.071 0" xyz="0.063 0 -0.0252"/>
+      <geometry>
+        <cylinder length="0.0486" radius="0.009"/>
+      </geometry>
+    </collision>
+  </link>
+</robot>

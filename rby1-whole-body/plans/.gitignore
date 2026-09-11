@@ -1,0 +1,32 @@
+# Planning artefacts are ignored by default: this directory accumulates
+# experiment caches (grid_cache_pt18_*, grid_cache_smooth, ...) worth tens of MB
+# of debug pickles and per-point solver logs, none of which belong in git.
+*
+!.gitignore
+!.gitkeep
+
+# The exception is the canonical grid_cache's actual deliverables. The 20 plan
+# pickles are 10 MB of the cache's 46 MB and are the trajectories that were
+# replayed on the robot, so committing them alongside the change that produced
+# them makes every trajectory regression visible in `git status` and bisectable.
+# The _debug pickles, the .log files and the .log.gcp1.live streams are the
+# other 36 MB and stay ignored -- they are diagnostics for one run, not results.
+#
+# The event log is committed too. Unlike the per-point .log diagnostics, the log
+# IS the result for anything quoted as a runtime number, and every figure in
+# timing_report.py is re-derivable from it without replanning. 7 MB of JSONL that
+# zlib-compresses to about a tenth of that in the pack.
+#
+# There is exactly one cache. Measurement runs used to land in sibling
+# directories (grid_cache_seq, grid_cache_timing, ...), which meant the answer to
+# "which run are these numbers from" depended on a directory name rather than on
+# the history -- and two of those siblings were half-finished runs that read as
+# results. A new run replaces this one in a commit; the previous run stays
+# reachable at the commit that held it.
+!grid_cache/
+grid_cache/*
+!grid_cache/point_[0-9][0-9].pkl
+!grid_cache/status.json
+!grid_cache/grid_status.png
+!grid_cache/timing/
+!grid_cache/timing/*.jsonl

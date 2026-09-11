@@ -1,0 +1,36 @@
+# Material definitions for mid-360.obj.
+# Values carried over from the previous Autodesk-exported mesh of the
+# same sensor, so the part colouring matches what the figures used before.
+
+newmtl Opaque(220,220,220)
+Kd 0.862745 0.862745 0.862745
+Ka 0 0 0
+Ks 0.1 0.1 0.1
+Ns 32
+d 1
+illum 2
+
+newmtl Steel_-_Satin
+Kd 0.627451 0.627451 0.627451
+Ka 0 0 0
+Ks 0.1 0.1 0.1
+Ns 32
+d 1
+illum 2
+
+newmtl Opaque(17,1,151)
+Kd 0.066667 0.003922 0.592157
+Ka 0 0 0
+Ks 0.1 0.1 0.1
+Ns 32
+d 1
+illum 2
+
+newmtl Opaque(224,242,255)
+Kd 0.878431 0.949020 1.000000
+Ka 0 0 0
+Ks 0.1 0.1 0.1
+Ns 32
+d 1
+illum 2
+

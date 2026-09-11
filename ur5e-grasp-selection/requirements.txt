@@ -1,0 +1,42 @@
+# Python dependencies for the EAIK + IFT grasp-IK experiment.
+# Versions are the ones the reported results were produced with.
+#
+# Drake supplies pydrake and the SNOPT solver.  Drake's precompiled binaries bundle a
+# private SNOPT build that needs no separate licence when invoked through SnoptSolver,
+# so `pip install drake` is sufficient to reproduce the default (SNOPT) configuration.
+#
+# The reported results were produced against a local Drake source build, which carries no
+# version stamp, so this pin is a reconstruction rather than the exact original.  The code
+# uses no source-build-specific API.  1.56.0 is the release the whole code release is
+# validated against -- see ../docs/INSTALL.md.
+drake==1.56.0
+
+# Analytic inverse kinematics.
+eaik==1.2.1
+
+numpy==2.4.4
+matplotlib==3.10.9
+
+# pydrake imports pyyaml at `import pydrake.all`. The `drake` wheel declares it as a
+# dependency so pip pulls it in automatically; a Drake binary-tarball or source install
+# does not, and a venv does not see the system copy that install_prereqs put there.
+# Listing it explicitly makes all three install routes work. See ../docs/INSTALL.md.
+pyyaml
+tqdm==4.67.3
+
+# Optional: only used by src/bench_stats.py for the exact-binomial p-values in McNemar's
+# test and the Wilcoxon signed-rank test.  Without it those tests are skipped and the
+# benchmark still runs and reports every other metric.
+scipy==1.17.1
+
+# Used by scripts/visualize_grasp_selection.py and scripts/visualize_target_scene.py to
+# load the UR .dae visual meshes and split them into per-colour .obj files.  pycollada is
+# trimesh's COLLADA backend and is NOT pulled in by trimesh itself, so it has to be named.
+# A clean checkout ships the generated .obj files, so these are only needed if you delete
+# them and want them regenerated.
+trimesh
+pycollada
+
+# Not pip-installable and not needed for the benchmark: scripts/render_grasp_figure.py
+# imports `bpy` and `mathutils`, which come from Blender's bundled Python.  It is run as
+# `blender --background --python`, never with this interpreter.  See README.

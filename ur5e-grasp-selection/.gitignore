@@ -1,0 +1,10 @@
+__pycache__/
+*.py[cod]
+**/.ipynb_checkpoints/
+
+# Benchmark results and rendered figures, both created on demand.
+logs/
+out/
+
+# Python virtual environment
+venv/
